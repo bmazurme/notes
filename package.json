@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@diplodoc/transform": "^4.63.5",
     "@gravity-ui/components": "^4.16.0",
     "@gravity-ui/markdown-editor": "^15.24.0",
     "react": "^18.3.1",
