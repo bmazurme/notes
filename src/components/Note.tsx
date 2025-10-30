@@ -7,36 +7,39 @@ import { Pencil, TrashBin } from '@gravity-ui/icons';
 import style from './Note.module.css';
 
 
-export default function Note({ value, setOpen, setOpenAsk }
-  : { value: string; setOpen: (v: boolean) => void; setOpenAsk: (v: boolean) => void }) {
+export default function Note({ value, setOpen, setOpenAsk, title }
+  : { value: string; setOpen: (v: boolean) => void; setOpenAsk: (v: boolean) => void; title: string  }) {
   const divRef = useRef<HTMLDivElement>(null);
+  // console.log('>', JSON.stringify(value));
   const res = transform(value, { });
+  // console.log(res);
 
   return <Card style={{
-    // height: '120px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-}} view="filled" type="container" size="l">
+  }} view="filled" type="container" size="l">
     <div className={style.container}>
-      <Text variant="subheader-3">Title: some text</Text>
-      <div className={style.tools}>
-        <Button
-          view="flat"
-          size="s"
-          onClick={() => setOpen(true)}
-        >
-          <Icon data={Pencil} size={18} />
-        </Button>
-        <Button
-          view="flat"
-          size="s"
-          onClick={() => setOpenAsk(true)}
-        >
-          <Icon data={TrashBin} size={18} />
-        </Button>
+      <div className={style.header}>
+        <Text variant="subheader-3">{title}</Text>
+        <div className={style.tools}>
+          <Button
+            view="flat"
+            size="s"
+            onClick={() => setOpen(true)}
+          >
+            <Icon data={Pencil} size={18} />
+          </Button>
+          <Button
+            view="flat"
+            size="s"
+            onClick={() => setOpenAsk(true)}
+          >
+            <Icon data={TrashBin} size={18} />
+          </Button>
+        </div>
       </div>
-
+      
       <div className={style.block}>
         <YfmStaticView
           ref={divRef}
