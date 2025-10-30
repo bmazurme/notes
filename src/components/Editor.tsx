@@ -5,12 +5,17 @@ export interface EditorProps {
   onSubmit: (value: MarkupString) => void;
 }
 
-export const Editor: React.FC<EditorProps> = ({onSubmit}) => {
+export const Editor: React.FC<EditorProps> = ({ onSubmit }) => {
   const editor = useMarkdownEditor({
     md: {
       html: false,
     },
   });
+//   const editor = useMarkdownEditor({
+//   AllowHTML: true, // Важно!
+//   // остальные настройки...
+// });
+
 
   React.useEffect(() => {
     function submitHandler() {
