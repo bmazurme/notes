@@ -99,6 +99,11 @@
     --g-color-line-brand: var(--g-color-private-brand-600-solid);
 }
 
+
+/* body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+} */
+
 .gravity-ui-landing-layout__wrapper {
   display: flex;
   flex-direction: column;
