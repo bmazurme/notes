@@ -1,47 +1,55 @@
-import { Card, Label, Text } from '@gravity-ui/uikit';
-import { YfmStaticView, type MarkupString } from '@gravity-ui/markdown-editor';
+import { useRef } from 'react';
+import { Button, Card, Icon, Label, Text } from '@gravity-ui/uikit';
+import transform from '@diplodoc/transform';
+import { YfmStaticView } from '@gravity-ui/markdown-editor';
+import { Pencil, TrashBin } from '@gravity-ui/icons';
 
 import style from './Note.module.css';
-import { useRef, useState } from 'react';
-import transform from '@diplodoc/transform';
 
-export default function Note({ value }: { value: string }) {
+
+export default function Note({ value, setOpen, setOpenAsk }
+  : { value: string; setOpen: (v: boolean) => void; setOpenAsk: (v: boolean) => void }) {
   const divRef = useRef<HTMLDivElement>(null);
-  const [html, setHtml] = useState('');
-  // const [meta, setMeta] = useState<object | undefined>({});
-
-  // const handleSubmit = (value: MarkupString) => {
-    // console.log(value);
-
-    const res = transform(value, { });
-    // setHtml(res.result.html);
-    // setMeta(res.result.meta);
-  // };
+  const res = transform(value, { });
 
   return <Card style={{
-    height: '120px',
+    // height: '120px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
 }} view="filled" type="container" size="l">
     <div className={style.container}>
-      <Text variant="display-1">some text</Text>
-      Filled
-      <YfmStaticView
-        ref={divRef}
-        html={res.result.html}
-        noListReset
-        className="demo-preview"
-      />
+      <Text variant="subheader-3">Title: some text</Text>
+      <div className={style.tools}>
+        <Button
+          view="flat"
+          size="s"
+          onClick={() => setOpen(true)}
+        >
+          <Icon data={Pencil} size={18} />
+        </Button>
+        <Button
+          view="flat"
+          size="s"
+          onClick={() => setOpenAsk(true)}
+        >
+          <Icon data={TrashBin} size={18} />
+        </Button>
+      </div>
+
+      <div className={style.block}>
+        <YfmStaticView
+          ref={divRef}
+          html={res.result.html}
+          noListReset
+          className="demo-preview"
+        />
+      </div>
+
       <div className={style.tags}>
         <Label theme="normal">Normal</Label>
         <Label theme="info">Info</Label>
         <Label theme="success">Success</Label>
-        <Label theme="warning">Warning</Label>
-        <Label theme="danger">Danger</Label>
-        <Label theme="utility">Utility</Label>
-        <Label theme="unknown">Unknown</Label>
-        <Label theme="clear">Clear</Label>
       </div>
     </div>
   </Card>;
