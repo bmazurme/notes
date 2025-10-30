@@ -11,11 +11,6 @@ export const Editor: React.FC<EditorProps> = ({ onSubmit }) => {
       html: false,
     },
   });
-//   const editor = useMarkdownEditor({
-//   AllowHTML: true, // Важно!
-//   // остальные настройки...
-// });
-
 
   React.useEffect(() => {
     function submitHandler() {
