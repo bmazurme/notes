@@ -155,3 +155,25 @@
   align-items: center;
   margin-bottom: 40px;
 }
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 240px;
+  min-height: 100px;
+  padding: 20px;
+}
+.modal__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+.modal__title_input {
+  display: flex;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
