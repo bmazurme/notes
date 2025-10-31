@@ -2,7 +2,7 @@ import {  useState } from 'react';
 import { Toaster, ToasterComponent, ToasterProvider } from '@gravity-ui/uikit';
 
 import ThemeWrapper from './components/theme-wrapper/theme-wrapper';
-import Main from './components/Main';
+import MainPage from './components/MainPage';
 
 const toaster = new Toaster();
 
@@ -13,7 +13,7 @@ function App() {
     <ThemeWrapper isDark={isDark}>
       <ToasterProvider toaster={toaster}>
         <ToasterComponent />
-        <Main
+        <MainPage
           isDark={isDark}
           setIsDark={setIsDark}
         />
